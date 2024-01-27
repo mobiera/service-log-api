@@ -13,6 +13,7 @@ env:
   QUARKUS_CONTAINER_IMAGE_USERNAME: ${{ secrets.DOCKER_HUB_LOGIN }}
   QUARKUS_CONTAINER_IMAGE_PASSWORD: ${{ secrets.DOCKER_HUB_PWD }}
   MVN_SETTINGS: ${{ secrets.MVN_SETTINGS }}
+  GPG_KEY: ${{ secrets.GPG_KEY }}
 
 
 jobs:
@@ -31,5 +32,9 @@ jobs:
         
       - name: Build
         run: |
+          echo ${GPG_KEY} > /tmp/key
           echo ${MVN_SETTINGS} > /tmp/settings.xml
           mvn deploy -s /tmp/settings.xml
+          rm -f /tmp/key
+          rm -f /tmp/settings.xml
+          rm -rf /home/runner/.gpg
