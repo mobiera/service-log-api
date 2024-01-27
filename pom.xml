@@ -6,7 +6,7 @@
 
   <groupId>com.mobiera.commons</groupId>
   <artifactId>service-log-api</artifactId>
-  <version>1.1</version>
+  <version>1.2</version>
   <packaging>jar</packaging>
   <name>Service Log API</name>
    <description>Library for using Mobiera Service Log Container</description>
