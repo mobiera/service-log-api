@@ -32,4 +32,4 @@ jobs:
       - name: Build
         run: |
           echo ${MVN_SETTINGS} > /tmp/settings.xml
-          ./mvnw deploy -s /tmp/settings.xml
+          mvn deploy -s /tmp/settings.xml
