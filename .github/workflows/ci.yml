@@ -33,11 +33,7 @@ jobs:
       - name: Build
         run: |
           echo ${MVN_SETTINGS} > /tmp/settings.xml
-          wc /tmp/settings.xml
-          echo ${GPG_KEY} > /tmp/key
-          wc /tmp/key
-          gpg --import /tmp/key
-          rm -f /tmp/key
+          echo -n "$GPG_KEY" | base64 --decode | gpg --import
           mvn deploy -s /tmp/settings.xml
           rm -f /tmp/settings.xml
           rm -rf /home/runner/.gpg
